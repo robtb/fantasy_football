@@ -1,0 +1,19 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - Fantasy Football</title>
+        {% else %}
+        <title>Wilkommen to FF</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>Fantasy Football: <a href="/index">Home</a></div>
+        <hr>
+        <ul>
+        {% for player in players %}
+            <li>{{player}}</li>
+        </ul>
+        {% endfor %}
+        {% block content %}{% endblock %}
+    </body>
+</html>

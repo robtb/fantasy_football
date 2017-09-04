@@ -1,18 +1,11 @@
-from flask import render_template, flash, redirect
+from flask import render_template
 from app import app
-from .forms import LoginForm
+from database import DatabaseInterface
 
 
 @app.route('/')
 @app.route('/index')
 def index():
-
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        flash('Login requested for OpenID={}, remember_me={}'.format(form.openid.data, form.remember_me.data))
-        return redirect('/index')
-    return render_template('login.html',
+    dbi = DatabaseInterface('c:/sqlite/chinook/sample.db')
+    players = dbi.get_lastyear_stats('WR')
+    return render_template('base.html', title='Home', players=players)
