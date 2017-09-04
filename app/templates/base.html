@@ -7,11 +7,11 @@
         {% endif %}
     </head>
     <body>
-        <div>Fantasy Football: <a href="/index">Home</a></div>
+        <div>Fantasy Football: <a href="/index">Home</a><a href="/myteam">My Team</a></div>
         <hr>
         <ul>
         {% for player in players %}
-            <li>{{player}}</li>
+            <li> Name : {{player[0]}}, 2016 Score: {{player[1]}}</li>
         </ul>
         {% endfor %}
         {% block content %}{% endblock %}
